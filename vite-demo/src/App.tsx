@@ -1,6 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import "./scss/main.scss";
 import Header from "./components/header";
 
 function App() {
