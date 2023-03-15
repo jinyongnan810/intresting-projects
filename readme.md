@@ -2,6 +2,8 @@
 
 - Learned from https://www.youtube.com/watch?v=89NJdbYTgJ8
 - Makes uses of browser `import` to fetch modules on the fly, instead of making large bundles.
+- import & use .env([demo](https://github.com/jinyongnan810/intresting-projects/commit/87079ab69aa6048a8fe704e327e85ec8d32b9368))
+- use sass on the fly([demo](https://github.com/jinyongnan810/intresting-projects/commit/bd2a40d3b6e5e28cffba1e1794c3e5a6a2955eb7))
 
 ## Copilot
 
@@ -21,7 +23,7 @@
 
 ## mobx
 
-- https://github.com/jinyongnan810/next-mobx-demo
+= https://github.com/jinyongnan810/next-mobx-demo
 
 - Basically just create a store, and use observer to checkout store changes.
 - It was very easy to use, and suitable for small projects.
