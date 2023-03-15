@@ -21,7 +21,7 @@
 
 ## mobx
 
-= https://github.com/jinyongnan810/next-mobx-demo
+- https://github.com/jinyongnan810/next-mobx-demo
 
 - Basically just create a store, and use observer to checkout store changes.
 - It was very easy to use, and suitable for small projects.
