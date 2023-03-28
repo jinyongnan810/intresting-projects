@@ -1,7 +1,10 @@
 import { Button, Textarea, useToast } from "@chakra-ui/react";
-import { useState } from "react";
-
-const TextInput = () => {
+import { FunctionComponent, useState } from "react";
+type ExtractFunction = (text: string) => Promise<void>;
+type Props = {
+  extract: ExtractFunction;
+};
+const TextInput: FunctionComponent<Props> = ({ extract }) => {
   const [text, setText] = useState("");
   const toast = useToast();
   const submit = () => {
@@ -13,7 +16,9 @@ const TextInput = () => {
         duration: 5000,
         isClosable: true,
       });
+      return;
     }
+    extract(text);
   };
   return (
     <>
