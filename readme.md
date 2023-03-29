@@ -1,3 +1,10 @@
+## Extract keywords with OpenAI
+
+- repo: https://github.com/jinyongnan810/intresting-projects/tree/main/ai-keyword-extractor
+
+![
+](https://firebasestorage.googleapis.com/v0/b/mymemo-98f76.appspot.com/o/uploads%2FSIvHI3wJfEPSACxfj6WH1l53vZx1%2F66e570a9-639f-427b-9076-4227cfe7692c.png?alt=media&token=5378e038-cbdb-433d-baf5-1563811e8226)
+
 ## Vite
 
 - Learned from https://www.youtube.com/watch?v=89NJdbYTgJ8
