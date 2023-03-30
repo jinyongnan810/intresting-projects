@@ -2,6 +2,31 @@
 
 - repo: https://github.com/jinyongnan810/intresting-projects/tree/main/ai-keyword-extractor
 
+```dart
+// sample of asking davinci for general help
+const options = {
+  method: "POST",
+  headers: {
+    "Content-Type": "Application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_OPENAI_KEY}`,
+  },
+  body: JSON.stringify({
+    model: "text-davinci-003",
+    prompt:
+      "Extract keywords from this text. Make the first letter of each word uppercase and separate with commas.\n\n" +
+      text,
+    // https://platform.openai.com/docs/api-reference/completions/create
+    temperature: 0.5, // higher creates creative but sometimes unexpected answers, lower creates more conservative and predictable results.
+    max_tokens: 60,
+    frequency_penalty: 0.8,
+  }),
+};
+
+const res = await fetch(import.meta.env.VITE_OPENAI_URL, options);
+const json = await res.json();
+const results = json.choices[0].text.trim();
+```
+
 ![
 ](https://firebasestorage.googleapis.com/v0/b/mymemo-98f76.appspot.com/o/uploads%2FSIvHI3wJfEPSACxfj6WH1l53vZx1%2F66e570a9-639f-427b-9076-4227cfe7692c.png?alt=media&token=5378e038-cbdb-433d-baf5-1563811e8226)
 
