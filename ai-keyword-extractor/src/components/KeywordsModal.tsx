@@ -31,7 +31,7 @@ const KeywordsModal: FunctionComponent<Props> = ({
         <ModalContent>
           <ModalHeader>Extracted Keywords</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody display="flex" alignItems="center" justifyContent="center">
             {loading ? (
               <CircularProgress isIndeterminate color="blue.300" />
             ) : (
