@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "puppeteer": "^19.8.2"
+  },
+  "name": "puppeteer-scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
