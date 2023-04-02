@@ -11,8 +11,17 @@ const run = async () => {
   // snapshot entire page to pdf
   //   await page.pdf({ path: "top page.pdf", format: "A4" });
   // get entire html
-  const html = await page.content();
+  // const html = await page.content();
   // fs.writeFileSync("top page.html", html);
+
+  // get title
+  // console.log(`title: ${await page.evaluate(() => document.title)}`);
+  // get all the links
+  console.log(
+    `links: ${await page.evaluate(() =>
+      Array.from(document.querySelectorAll("a"), (e) => e.href)
+    )}`
+  );
 
   await browser.close();
 };
