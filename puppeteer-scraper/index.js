@@ -17,11 +17,20 @@ const run = async () => {
   // get title
   // console.log(`title: ${await page.evaluate(() => document.title)}`);
   // get all the links
-  console.log(
-    `links: ${await page.evaluate(() =>
-      Array.from(document.querySelectorAll("a"), (e) => e.href)
-    )}`
+  // console.log(
+  //   `links: ${await page.evaluate(() =>
+  //     Array.from(document.querySelectorAll("a"), (e) => e.href)
+  //   )}`
+  // );
+
+  const courses = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("#cscourses .card"), (e) => ({
+      title: e.querySelector(".card-body h3").innerText,
+      level: e.querySelector(".card-body .level").innerText,
+      url: e.querySelector(".card-footer a").href,
+    }))
   );
+  console.log(courses);
 
   await browser.close();
 };
