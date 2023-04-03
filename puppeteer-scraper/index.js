@@ -23,14 +23,23 @@ const run = async () => {
   //   )}`
   // );
 
-  const courses = await page.evaluate(() =>
+  const coursesWay1 = await page.evaluate(() =>
     Array.from(document.querySelectorAll("#cscourses .card"), (e) => ({
       title: e.querySelector(".card-body h3").innerText,
       level: e.querySelector(".card-body .level").innerText,
       url: e.querySelector(".card-footer a").href,
     }))
   );
-  console.log(courses);
+  console.log(coursesWay1);
+
+  const coursesWay2 = await page.$$eval("#cscourses .card", (cards) =>
+    cards.map((card) => ({
+      title: card.querySelector(".card-body h3").innerText,
+      level: card.querySelector(".card-body .level").innerText,
+      url: card.querySelector(".card-footer a").href,
+    }))
+  );
+  console.log(coursesWay2);
 
   await browser.close();
 };
