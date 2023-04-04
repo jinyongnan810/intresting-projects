@@ -41,6 +41,8 @@ const run = async () => {
   );
   console.log(coursesWay2);
 
+  fs.writeFileSync("./courses.json", JSON.stringify(coursesWay1));
+
   await browser.close();
 };
 
