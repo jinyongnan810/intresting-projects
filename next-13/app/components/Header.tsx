@@ -1,4 +1,6 @@
+// "use client";
 import Link from "next/link";
+// import { useState } from "react";
 // if not specified, every component is a React Server-side Component
 // pros:
 // - load faster
@@ -9,6 +11,7 @@ import Link from "next/link";
 // - can't use useState
 // - can't use useEffect
 const Header = () => {
+  // const [text, setText] = useState("");
   return (
     <header className="header">
       <div className="container">
