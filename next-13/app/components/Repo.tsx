@@ -4,7 +4,7 @@ const fetchRepo = async (name: string) => {
     `https://api.github.com/repos/jinyongnan810/${name}`
   );
   const repo = await response.json();
-  await new Promise((res) => setTimeout(res, 2000));
+  // await new Promise((res) => setTimeout(res, 2000));
   return repo;
 };
 const Repo = async ({ name }: { name: string }) => {

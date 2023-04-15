@@ -6,7 +6,7 @@ const getRepos = async () => {
     "https://api.github.com/users/jinyongnan810/repos"
   );
   const repos = await response.json();
-  await new Promise((res) => setTimeout(res, 2000));
+  // await new Promise((res) => setTimeout(res, 2000));
   return repos;
 };
 
