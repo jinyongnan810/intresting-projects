@@ -2,7 +2,13 @@ import Link from "next/link";
 
 const fetchRepoContents = async (name: string) => {
   const response = await fetch(
-    `https://api.github.com/repos/jinyongnan810/${name}/contents`
+    `https://api.github.com/repos/jinyongnan810/${name}/contents`,
+    {
+      next: {
+        // cache for only 60 seconds
+        revalidate: 60,
+      },
+    }
   );
   const repo = await response.json();
   await new Promise((res) => setTimeout(res, 2000));

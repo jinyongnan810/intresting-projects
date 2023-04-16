@@ -1,7 +1,14 @@
 import { FaCodeBranch, FaEye, FaStar } from "react-icons/fa";
 const fetchRepo = async (name: string) => {
   const response = await fetch(
-    `https://api.github.com/repos/jinyongnan810/${name}`
+    `https://api.github.com/repos/jinyongnan810/${name}`,
+    {
+      next: {
+        // cache for only 60 seconds
+        // https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration
+        revalidate: 60,
+      },
+    }
   );
   const repo = await response.json();
   // await new Promise((res) => setTimeout(res, 2000));
