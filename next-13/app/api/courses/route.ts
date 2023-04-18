@@ -6,7 +6,13 @@ export async function GET(request: Request) {
   // to get search params
   // localhost:3000/api/courses?query=react
   const { searchParams } = new URL(request.url);
-  console.log(searchParams.get("query"));
+  const query = searchParams.get("query");
+  if (query) {
+    const filteredCourses = courses.filter((c) =>
+      c.title.toLowerCase().includes(query.toLowerCase())
+    );
+    return NextResponse.json(filteredCourses);
+  }
   return NextResponse.json(courses);
 }
 
