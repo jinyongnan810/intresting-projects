@@ -1,3 +1,41 @@
+## Puppeteer Scraper
+
+- [scraper](https://github.com/jinyongnan810/intresting-projects/blob/main/puppeteer-scraper/index.js)
+- puppeteer can
+  - load url
+  - export page to image/pdf/html
+  - query elements
+
+## Next.js 13
+
+- [Basics](https://github.com/jinyongnan810/intresting-projects/compare/ed5178709c5d0d3334b9e71378694d70cadc6d42...e9260f021adb9764ac52bffb4bfda067a3ba5a1b)
+
+### tips
+
+- using TypeScript serverside async component
+
+```ts
+// include this to referencing tsx
+{
+  /* @ts-expect-error Server Component */
+}
+```
+
+- using Suspense to separete loading of difference components
+
+```html
+<>
+      <Suspense fallback={<div>Loading repo...</div>}>
+        {/* @ts-expect-error Server Component */}
+        <Repo name={name} />
+      </Suspense>
+      <Suspense fallback={<div>Loading repo directories...</div>}>
+        {/* @ts-expect-error Server Component */}
+        <RepoDirs name={name} />
+      </Suspense>
+</>
+```
+
 ## Extract keywords with OpenAI
 
 - repo: https://github.com/jinyongnan810/intresting-projects/tree/main/ai-keyword-extractor
