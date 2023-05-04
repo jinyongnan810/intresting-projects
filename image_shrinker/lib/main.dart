@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_shrinker/components/current_files.dart';
 import 'package:image_shrinker/components/file_dropper.dart';
 
 void main() {
@@ -26,8 +28,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: const [FileDropper()]),
+    return ProviderScope(
+      child: Scaffold(
+        body: Column(children: const [
+          FileDropper(),
+          CurrentFiles(),
+        ]),
+      ),
     );
   }
 }

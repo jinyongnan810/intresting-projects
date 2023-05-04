@@ -2,6 +2,7 @@ import 'package:desktop_drop/desktop_drop.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_shrinker/providers/current_dropped_files_provider.dart';
 
 class FileDropper extends ConsumerWidget {
   const FileDropper({super.key});
@@ -19,9 +20,10 @@ class FileDropper extends ConsumerWidget {
         radius: const Radius.circular(20),
         child: DropTarget(
           onDragDone: (details) {
-            for (var file in details.files) {
-              print(file.path);
-            }
+            final images =
+                details.files.where((file) => file.path.endsWith('.png'));
+            ref.read(currentDroppedFilesProvider.notifier).state =
+                images.toList();
           },
           onDragEntered: (details) {},
           onDragExited: (details) {},
