@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_shrinker/components/current_files.dart';
 import 'package:image_shrinker/components/file_dropper.dart';
+import 'package:image_shrinker/components/shrink_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,10 +31,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: Scaffold(
-        body: Column(children: const [
-          FileDropper(),
-          CurrentFiles(),
-        ]),
+        body: Column(
+            children: const [FileDropper(), CurrentFiles(), ShrinkButton()]),
       ),
     );
   }
