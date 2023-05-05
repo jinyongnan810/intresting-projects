@@ -10,6 +10,8 @@ class ImageShrinkHelper {
       return false;
     }
 
+    // await Future<void>.delayed(const Duration(seconds: 1));
+
     final directoryExists =
         Directory('/Users/kinyuunan/Desktop/image_shrinker_output')
             .existsSync();

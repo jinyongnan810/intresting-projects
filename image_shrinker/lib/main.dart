@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_shrinker/components/current_files.dart';
 import 'package:image_shrinker/components/file_dropper.dart';
+import 'package:image_shrinker/components/loading/loading_screen.dart';
 import 'package:image_shrinker/components/shrink_button.dart';
+import 'package:image_shrinker/providers/loading_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +21,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: const HomePage(),
+      home: Consumer(builder: (ctx, ref, child) {
+        ref.listen(loadingProvider, (previous, next) {
+          if (previous != null && next) {
+            LoadingScreen.instance().show(context: ctx, text: 'Shrinking');
+          } else if (previous == true && next == false) {
+            LoadingScreen.instance().hide();
+          }
+        });
+        return const HomePage();
+      }),
     );
   }
 }
@@ -29,11 +40,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProviderScope(
-      child: Scaffold(
-        body: Column(
-            children: const [FileDropper(), CurrentFiles(), ShrinkButton()]),
-      ),
+    return Scaffold(
+      body: Column(
+          children: const [FileDropper(), CurrentFiles(), ShrinkButton()]),
     );
   }
 }
