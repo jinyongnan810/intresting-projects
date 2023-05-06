@@ -20,7 +20,11 @@ class ShrinkButton extends ConsumerWidget {
         }
         ref.read(loadingProvider.notifier).state = true;
         for (final file in originalFiles) {
-          await ImageShrinkHelper.shrink(File(file.path));
+          final _ = await ImageShrinkHelper.shrink(File(file.path));
+        }
+        if (context.mounted) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text('Shrink Finished')));
         }
         ref.read(loadingProvider.notifier).state = false;
       },
