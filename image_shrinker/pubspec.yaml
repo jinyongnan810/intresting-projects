@@ -92,12 +92,12 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
+  android: false
+  ios: false
   image_path: "assets/images/icon.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
-    generate: true
+    generate: false
     image_path: "assets/images/icon.png"
   windows:
     generate: true
