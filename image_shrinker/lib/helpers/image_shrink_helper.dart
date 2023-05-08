@@ -1,6 +1,6 @@
 import 'dart:io';
 // ignore: depend_on_referenced_packages
-import 'package:image_shrinker/providers/config_provider.dart';
+import 'package:image_shrinker/models/shrink_config.dart';
 import 'package:path/path.dart';
 import 'package:image/image.dart' as img;
 
@@ -13,12 +13,9 @@ class ImageShrinkHelper {
 
     // await Future<void>.delayed(const Duration(seconds: 1));
     try {
-      final directoryExists =
-          Directory('/Users/kinyuunan/Desktop/image_shrinker_output')
-              .existsSync();
+      final directoryExists = Directory(config.outputPath).existsSync();
       if (!directoryExists) {
-        Directory('/Users/kinyuunan/Desktop/image_shrinker_output')
-            .createSync();
+        Directory(config.outputPath).createSync();
       }
 
       final resizedImage = img.copyResize(
@@ -26,8 +23,8 @@ class ImageShrinkHelper {
         width: (fileAsImage.width * 0.5).floor(),
       );
       final name = basename(file.path);
-      final result = await img.encodePngFile(
-          '/Users/kinyuunan/Desktop/image_shrinker_output/$name', resizedImage);
+      final result =
+          await img.encodePngFile('${config.outputPath}/$name', resizedImage);
       if (!result) {
         throw Exception('Error when shrinking.');
       }

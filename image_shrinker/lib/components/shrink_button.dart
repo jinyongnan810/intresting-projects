@@ -13,24 +13,27 @@ class ShrinkButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ElevatedButton(
-      onPressed: () async {
-        final originalFiles = ref.read(currentDroppedFilesProvider);
-        if (originalFiles.isEmpty) {
-          return;
-        }
-        final config = ref.read(configProvider);
-        ref.read(loadingProvider.notifier).state = true;
-        for (final file in originalFiles) {
-          final _ = await ImageShrinkHelper.shrink(File(file.path), config);
-        }
-        if (context.mounted) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Shrink Finished')));
-        }
-        ref.read(loadingProvider.notifier).state = false;
-      },
-      child: const Text('Shrink'),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: ElevatedButton(
+        onPressed: () async {
+          final originalFiles = ref.read(currentDroppedFilesProvider);
+          if (originalFiles.isEmpty) {
+            return;
+          }
+          final config = ref.read(configProvider);
+          ref.read(loadingProvider.notifier).state = true;
+          for (final file in originalFiles) {
+            final _ = await ImageShrinkHelper.shrink(File(file.path), config);
+          }
+          if (context.mounted) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text('Shrink Finished')));
+          }
+          ref.read(loadingProvider.notifier).state = false;
+        },
+        child: const Text('Shrink'),
+      ),
     );
   }
 }

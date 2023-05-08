@@ -1,23 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-class ShrinkConfig {
-  final String outputPath;
-  final bool usePercentage;
-  final bool usePixel;
-  final int percentage;
-  final int pixel;
-
-  ShrinkConfig({
-    required this.outputPath,
-    required this.usePercentage,
-    required this.usePixel,
-    required this.percentage,
-    required this.pixel,
-  });
-}
+import 'package:image_shrinker/models/shrink_config.dart';
 
 final configProvider =
-    StateProvider.autoDispose<ShrinkConfig>((ref) => ShrinkConfig(
+    StateProvider.autoDispose<ShrinkConfig>((ref) => const ShrinkConfig(
           outputPath: '/Users/kinyuunan/Desktop/image_shrinker_output',
           usePercentage: true,
           usePixel: false,

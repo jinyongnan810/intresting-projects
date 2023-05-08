@@ -39,6 +39,8 @@ dependencies:
   dotted_border: ^2.0.0+3
   desktop_drop: ^0.4.1
   image: ^4.0.16
+  file_selector: ^0.9.3
+  freezed: ^2.3.3
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +52,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_shrinker/components/current_files.dart';
 import 'package:image_shrinker/components/file_dropper.dart';
+import 'package:image_shrinker/components/folder_selector.dart';
 import 'package:image_shrinker/components/loading/loading_screen.dart';
 import 'package:image_shrinker/components/shrink_button.dart';
 import 'package:image_shrinker/providers/loading_provider.dart';
@@ -41,8 +42,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-          children: const [FileDropper(), CurrentFiles(), ShrinkButton()]),
+      body: Column(children: const [
+        FileDropper(),
+        CurrentFiles(),
+        Divider(),
+        FolderSelector(),
+        ShrinkButton()
+      ]),
     );
   }
 }
