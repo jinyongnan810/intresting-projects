@@ -1,10 +1,11 @@
 import 'dart:io';
 // ignore: depend_on_referenced_packages
+import 'package:image_shrinker/providers/config_provider.dart';
 import 'package:path/path.dart';
 import 'package:image/image.dart' as img;
 
 class ImageShrinkHelper {
-  static Future<String?> shrink(File file) async {
+  static Future<String?> shrink(File file, ShrinkConfig config) async {
     final fileAsImage = img.decodeImage(file.readAsBytesSync());
     if (fileAsImage == null) {
       return null;
