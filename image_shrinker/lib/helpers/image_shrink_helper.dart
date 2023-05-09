@@ -1,6 +1,7 @@
 import 'dart:io';
 // ignore: depend_on_referenced_packages
 import 'package:image_shrinker/models/shrink_config.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 import 'package:image/image.dart' as img;
 
