@@ -19,9 +19,13 @@ class ImageShrinkHelper {
         Directory(config.outputPath).createSync();
       }
 
+      final width = config.usePixel
+          ? config.pixel
+          : (fileAsImage.width * config.percentage / 100);
+
       final resizedImage = img.copyResize(
         fileAsImage,
-        width: (fileAsImage.width * 0.5).floor(),
+        width: width.floor(),
       );
       final name = basename(file.path);
       final result =
