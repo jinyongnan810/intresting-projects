@@ -7,7 +7,8 @@ class PixelSlider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final enabled = ref.watch(configProvider.select((value) => value.usePixel));
+    final enabled =
+        !(ref.watch(configProvider.select((value) => value.usePercentage)));
     final pixel = ref.watch(configProvider.select((value) => value.pixel));
     return Row(
       children: [
@@ -19,8 +20,7 @@ class PixelSlider extends ConsumerWidget {
               }
               final config = ref.read(configProvider);
               final configNotifier = ref.read(configProvider.notifier);
-              configNotifier.state =
-                  config.copyWith(usePercentage: false, usePixel: true);
+              configNotifier.state = config.copyWith(usePercentage: false);
             }),
         const Text('Use Pixel'),
         Slider(

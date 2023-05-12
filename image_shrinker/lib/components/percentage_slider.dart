@@ -21,8 +21,7 @@ class PercentageSlider extends ConsumerWidget {
               }
               final config = ref.read(configProvider);
               final configNotifier = ref.read(configProvider.notifier);
-              configNotifier.state =
-                  config.copyWith(usePercentage: true, usePixel: false);
+              configNotifier.state = config.copyWith(usePercentage: true);
             }),
         const Text('Use Percentage'),
         Slider(

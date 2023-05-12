@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ShrinkConfig {
   String get outputPath => throw _privateConstructorUsedError;
   bool get usePercentage => throw _privateConstructorUsedError;
-  bool get usePixel => throw _privateConstructorUsedError;
   int get percentage => throw _privateConstructorUsedError;
   int get pixel => throw _privateConstructorUsedError;
 
@@ -33,12 +32,7 @@ abstract class $ShrinkConfigCopyWith<$Res> {
           ShrinkConfig value, $Res Function(ShrinkConfig) then) =
       _$ShrinkConfigCopyWithImpl<$Res, ShrinkConfig>;
   @useResult
-  $Res call(
-      {String outputPath,
-      bool usePercentage,
-      bool usePixel,
-      int percentage,
-      int pixel});
+  $Res call({String outputPath, bool usePercentage, int percentage, int pixel});
 }
 
 /// @nodoc
@@ -56,7 +50,6 @@ class _$ShrinkConfigCopyWithImpl<$Res, $Val extends ShrinkConfig>
   $Res call({
     Object? outputPath = null,
     Object? usePercentage = null,
-    Object? usePixel = null,
     Object? percentage = null,
     Object? pixel = null,
   }) {
@@ -68,10 +61,6 @@ class _$ShrinkConfigCopyWithImpl<$Res, $Val extends ShrinkConfig>
       usePercentage: null == usePercentage
           ? _value.usePercentage
           : usePercentage // ignore: cast_nullable_to_non_nullable
-              as bool,
-      usePixel: null == usePixel
-          ? _value.usePixel
-          : usePixel // ignore: cast_nullable_to_non_nullable
               as bool,
       percentage: null == percentage
           ? _value.percentage
@@ -93,12 +82,7 @@ abstract class _$$_ShrinkConfigCopyWith<$Res>
       __$$_ShrinkConfigCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String outputPath,
-      bool usePercentage,
-      bool usePixel,
-      int percentage,
-      int pixel});
+  $Res call({String outputPath, bool usePercentage, int percentage, int pixel});
 }
 
 /// @nodoc
@@ -114,7 +98,6 @@ class __$$_ShrinkConfigCopyWithImpl<$Res>
   $Res call({
     Object? outputPath = null,
     Object? usePercentage = null,
-    Object? usePixel = null,
     Object? percentage = null,
     Object? pixel = null,
   }) {
@@ -126,10 +109,6 @@ class __$$_ShrinkConfigCopyWithImpl<$Res>
       usePercentage: null == usePercentage
           ? _value.usePercentage
           : usePercentage // ignore: cast_nullable_to_non_nullable
-              as bool,
-      usePixel: null == usePixel
-          ? _value.usePixel
-          : usePixel // ignore: cast_nullable_to_non_nullable
               as bool,
       percentage: null == percentage
           ? _value.percentage
@@ -149,7 +128,6 @@ class _$_ShrinkConfig implements _ShrinkConfig {
   const _$_ShrinkConfig(
       {required this.outputPath,
       required this.usePercentage,
-      required this.usePixel,
       required this.percentage,
       required this.pixel});
 
@@ -158,15 +136,13 @@ class _$_ShrinkConfig implements _ShrinkConfig {
   @override
   final bool usePercentage;
   @override
-  final bool usePixel;
-  @override
   final int percentage;
   @override
   final int pixel;
 
   @override
   String toString() {
-    return 'ShrinkConfig(outputPath: $outputPath, usePercentage: $usePercentage, usePixel: $usePixel, percentage: $percentage, pixel: $pixel)';
+    return 'ShrinkConfig(outputPath: $outputPath, usePercentage: $usePercentage, percentage: $percentage, pixel: $pixel)';
   }
 
   @override
@@ -178,16 +154,14 @@ class _$_ShrinkConfig implements _ShrinkConfig {
                 other.outputPath == outputPath) &&
             (identical(other.usePercentage, usePercentage) ||
                 other.usePercentage == usePercentage) &&
-            (identical(other.usePixel, usePixel) ||
-                other.usePixel == usePixel) &&
             (identical(other.percentage, percentage) ||
                 other.percentage == percentage) &&
             (identical(other.pixel, pixel) || other.pixel == pixel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, outputPath, usePercentage, usePixel, percentage, pixel);
+  int get hashCode =>
+      Object.hash(runtimeType, outputPath, usePercentage, percentage, pixel);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +174,6 @@ abstract class _ShrinkConfig implements ShrinkConfig {
   const factory _ShrinkConfig(
       {required final String outputPath,
       required final bool usePercentage,
-      required final bool usePixel,
       required final int percentage,
       required final int pixel}) = _$_ShrinkConfig;
 
@@ -208,8 +181,6 @@ abstract class _ShrinkConfig implements ShrinkConfig {
   String get outputPath;
   @override
   bool get usePercentage;
-  @override
-  bool get usePixel;
   @override
   int get percentage;
   @override

@@ -5,7 +5,6 @@ final configProvider =
     StateProvider.autoDispose<ShrinkConfig>((ref) => const ShrinkConfig(
           outputPath: '/',
           usePercentage: true,
-          usePixel: false,
           percentage: 50,
           pixel: 256,
         ));

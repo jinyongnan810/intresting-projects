@@ -7,7 +7,6 @@ class ShrinkConfig with _$ShrinkConfig {
   const factory ShrinkConfig({
     required String outputPath,
     required bool usePercentage,
-    required bool usePixel,
     required int percentage,
     required int pixel,
   }) = _ShrinkConfig;
