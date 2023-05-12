@@ -1,5 +1,3 @@
-# TODOs
+## Note
 
-- shrink by ratio
-- shrink to certain pixels
-- proper list
+- Currently only tested in macos.
