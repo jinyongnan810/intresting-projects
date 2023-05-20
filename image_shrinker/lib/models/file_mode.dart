@@ -1,0 +1,1 @@
+enum FileMode { image, video }
