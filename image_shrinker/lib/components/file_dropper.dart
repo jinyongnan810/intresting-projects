@@ -6,6 +6,7 @@ import 'package:image_shrinker/providers/current_dropped_files_provider.dart';
 
 class FileDropper extends ConsumerWidget {
   const FileDropper({super.key});
+  static const fileTypes = ['.png', '.mp4', '.mov'];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,10 +21,10 @@ class FileDropper extends ConsumerWidget {
         radius: const Radius.circular(20),
         child: DropTarget(
           onDragDone: (details) {
-            final images =
-                details.files.where((file) => file.path.endsWith('.png'));
+            final targets = details.files
+                .where((file) => fileTypes.any(file.path.endsWith));
             ref.read(currentDroppedFilesProvider.notifier).state =
-                images.toList();
+                targets.toList();
           },
           onDragEntered: (details) {},
           onDragExited: (details) {},
