@@ -29,7 +29,7 @@ class ImageShrinkHelper {
       );
       final name = basename(file.path);
       final result =
-          await img.encodePngFile('${config.outputPath}/$name', resizedImage);
+          await img.encodeImageFile('${config.outputPath}/$name', resizedImage);
       if (!result) {
         throw Exception('Error when shrinking.');
       }

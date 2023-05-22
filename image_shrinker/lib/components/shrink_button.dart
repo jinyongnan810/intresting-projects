@@ -34,15 +34,11 @@ class ShrinkButton extends ConsumerWidget {
                 ref.read(loadingProvider.notifier).state = true;
                 for (final file in originalFiles) {
                   if (isImage) {
-                    if (file.path.endsWith('.png')) {
-                      final _ = await ImageShrinkHelper.shrink(
-                          File(file.path), config);
-                    }
+                    final _ =
+                        await ImageShrinkHelper.shrink(File(file.path), config);
                   } else {
-                    if (file.path.endsWith('.mov')) {
-                      final _ =
-                          await VideoCompressHelper.compress(file.path, config);
-                    }
+                    final _ =
+                        await VideoCompressHelper.compress(file.path, config);
                   }
                 }
                 if (context.mounted) {
