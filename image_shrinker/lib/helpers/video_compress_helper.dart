@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:image_shrinker/models/shrink_config.dart';
 import 'package:video_compress/video_compress.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 class VideoCompressHelper {
@@ -25,6 +26,11 @@ class VideoCompressHelper {
       final name = basename(path);
       await file.copy(join(config.outputPath, name));
       await file.delete();
+      final thumbnailFile = await VideoCompress.getFileThumbnail(path,
+          quality: 100, position: -1);
+      final title = basenameWithoutExtension(path);
+      await thumbnailFile.copy(join(config.outputPath, '$title-thumbnail.png'));
+      await thumbnailFile.delete();
     } catch (e) {
       debugPrint(e.toString());
     }
