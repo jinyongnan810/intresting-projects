@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_shrinker/components/loading/loading_screen.dart';
 import 'package:video_compress/video_compress.dart';
 
 class VideoProgressIndicator extends ConsumerStatefulWidget {
@@ -13,14 +14,17 @@ class VideoProgressIndicator extends ConsumerStatefulWidget {
 class _VideoProgressIndicatorState
     extends ConsumerState<VideoProgressIndicator> {
   late Subscription _subscription;
-  double _progress = 0;
   @override
   void initState() {
     super.initState();
     _subscription = VideoCompress.compressProgress$.subscribe((progress) {
-      setState(() {
-        _progress = progress;
-      });
+      if (progress.floor() == 100) {
+        Future.delayed(
+            const Duration(seconds: 1), () => LoadingScreen.instance().hide());
+      }
+      LoadingScreen.instance().show(
+          context: context,
+          text: 'Compressing: ${progress.toStringAsFixed(1)}%');
     });
   }
 
@@ -32,6 +36,6 @@ class _VideoProgressIndicatorState
 
   @override
   Widget build(BuildContext context) {
-    return Text('${_progress.ceil()}%');
+    return const SizedBox.shrink();
   }
 }
