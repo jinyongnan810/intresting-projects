@@ -31,6 +31,8 @@ class VideoCompressHelper {
       final title = basenameWithoutExtension(path);
       await thumbnailFile.copy(join(config.outputPath, '$title-thumbnail.png'));
       await thumbnailFile.delete();
+      // not working
+      await VideoCompress.deleteAllCache();
       VideoCompress.dispose();
     } catch (e) {
       debugPrint(e.toString());

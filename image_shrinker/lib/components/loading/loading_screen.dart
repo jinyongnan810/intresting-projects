@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:image_shrinker/components/loading/loading_screen_controller.dart';
+import 'package:image_shrinker/components/video_progress_indicator.dart';
 
 class LoadingScreen {
   LoadingScreen._sharedInstance();
@@ -76,7 +77,8 @@ class LoadingScreen {
                                   );
                                 }
                                 return Container();
-                              })
+                              }),
+                          const VideoProgressIndicator()
                         ]),
                   ),
                 ),
@@ -86,10 +88,12 @@ class LoadingScreen {
     state.insert(overlay);
 
     return LoadingScreenController(close: () {
+      print('close');
       textStream.close();
       overlay.remove();
       return true;
     }, update: (text) {
+      print('update');
       textStream.add(text);
       return true;
     });
