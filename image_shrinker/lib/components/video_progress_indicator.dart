@@ -37,16 +37,16 @@ class _VideoProgressIndicatorState
     _subscription = VideoCompress.compressProgress$.subscribe((progress) {
       setState(() {
         _progress = progress;
-        print(_progress);
+        debugPrint(_progress.toString());
       });
     });
   }
 
   @override
   void dispose() {
-    _subscription.unsubscribe();
-    print('dispose');
+    debugPrint('dispose');
     super.dispose();
+    _subscription.unsubscribe();
   }
 
   @override

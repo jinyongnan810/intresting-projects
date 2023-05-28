@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:image_shrinker/models/shrink_config.dart';
+import 'package:image_shrinker/models/video_compress_quality.dart';
 import 'package:video_compress/video_compress.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
@@ -10,7 +11,7 @@ class VideoCompressHelper {
       // NOTE: currently not working with file names with spaces or non-ascii chars
       MediaInfo? mediaInfo = await VideoCompress.compressVideo(
         path,
-        quality: VideoQuality.DefaultQuality,
+        quality: config.videoCompressQuality.getActualQuality(),
         deleteOrigin: false,
         frameRate: 15,
       );

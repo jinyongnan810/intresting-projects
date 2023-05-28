@@ -20,6 +20,8 @@ mixin _$ShrinkConfig {
   bool get usePercentage => throw _privateConstructorUsedError;
   int get percentage => throw _privateConstructorUsedError;
   int get pixel => throw _privateConstructorUsedError;
+  VideoCompressQuality get videoCompressQuality =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShrinkConfigCopyWith<ShrinkConfig> get copyWith =>
@@ -32,7 +34,12 @@ abstract class $ShrinkConfigCopyWith<$Res> {
           ShrinkConfig value, $Res Function(ShrinkConfig) then) =
       _$ShrinkConfigCopyWithImpl<$Res, ShrinkConfig>;
   @useResult
-  $Res call({String outputPath, bool usePercentage, int percentage, int pixel});
+  $Res call(
+      {String outputPath,
+      bool usePercentage,
+      int percentage,
+      int pixel,
+      VideoCompressQuality videoCompressQuality});
 }
 
 /// @nodoc
@@ -52,6 +59,7 @@ class _$ShrinkConfigCopyWithImpl<$Res, $Val extends ShrinkConfig>
     Object? usePercentage = null,
     Object? percentage = null,
     Object? pixel = null,
+    Object? videoCompressQuality = null,
   }) {
     return _then(_value.copyWith(
       outputPath: null == outputPath
@@ -70,6 +78,10 @@ class _$ShrinkConfigCopyWithImpl<$Res, $Val extends ShrinkConfig>
           ? _value.pixel
           : pixel // ignore: cast_nullable_to_non_nullable
               as int,
+      videoCompressQuality: null == videoCompressQuality
+          ? _value.videoCompressQuality
+          : videoCompressQuality // ignore: cast_nullable_to_non_nullable
+              as VideoCompressQuality,
     ) as $Val);
   }
 }
@@ -82,7 +94,12 @@ abstract class _$$_ShrinkConfigCopyWith<$Res>
       __$$_ShrinkConfigCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String outputPath, bool usePercentage, int percentage, int pixel});
+  $Res call(
+      {String outputPath,
+      bool usePercentage,
+      int percentage,
+      int pixel,
+      VideoCompressQuality videoCompressQuality});
 }
 
 /// @nodoc
@@ -100,6 +117,7 @@ class __$$_ShrinkConfigCopyWithImpl<$Res>
     Object? usePercentage = null,
     Object? percentage = null,
     Object? pixel = null,
+    Object? videoCompressQuality = null,
   }) {
     return _then(_$_ShrinkConfig(
       outputPath: null == outputPath
@@ -118,6 +136,10 @@ class __$$_ShrinkConfigCopyWithImpl<$Res>
           ? _value.pixel
           : pixel // ignore: cast_nullable_to_non_nullable
               as int,
+      videoCompressQuality: null == videoCompressQuality
+          ? _value.videoCompressQuality
+          : videoCompressQuality // ignore: cast_nullable_to_non_nullable
+              as VideoCompressQuality,
     ));
   }
 }
@@ -129,7 +151,8 @@ class _$_ShrinkConfig implements _ShrinkConfig {
       {required this.outputPath,
       required this.usePercentage,
       required this.percentage,
-      required this.pixel});
+      required this.pixel,
+      required this.videoCompressQuality});
 
   @override
   final String outputPath;
@@ -139,10 +162,12 @@ class _$_ShrinkConfig implements _ShrinkConfig {
   final int percentage;
   @override
   final int pixel;
+  @override
+  final VideoCompressQuality videoCompressQuality;
 
   @override
   String toString() {
-    return 'ShrinkConfig(outputPath: $outputPath, usePercentage: $usePercentage, percentage: $percentage, pixel: $pixel)';
+    return 'ShrinkConfig(outputPath: $outputPath, usePercentage: $usePercentage, percentage: $percentage, pixel: $pixel, videoCompressQuality: $videoCompressQuality)';
   }
 
   @override
@@ -156,12 +181,14 @@ class _$_ShrinkConfig implements _ShrinkConfig {
                 other.usePercentage == usePercentage) &&
             (identical(other.percentage, percentage) ||
                 other.percentage == percentage) &&
-            (identical(other.pixel, pixel) || other.pixel == pixel));
+            (identical(other.pixel, pixel) || other.pixel == pixel) &&
+            (identical(other.videoCompressQuality, videoCompressQuality) ||
+                other.videoCompressQuality == videoCompressQuality));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, outputPath, usePercentage, percentage, pixel);
+  int get hashCode => Object.hash(runtimeType, outputPath, usePercentage,
+      percentage, pixel, videoCompressQuality);
 
   @JsonKey(ignore: true)
   @override
@@ -172,10 +199,12 @@ class _$_ShrinkConfig implements _ShrinkConfig {
 
 abstract class _ShrinkConfig implements ShrinkConfig {
   const factory _ShrinkConfig(
-      {required final String outputPath,
-      required final bool usePercentage,
-      required final int percentage,
-      required final int pixel}) = _$_ShrinkConfig;
+          {required final String outputPath,
+          required final bool usePercentage,
+          required final int percentage,
+          required final int pixel,
+          required final VideoCompressQuality videoCompressQuality}) =
+      _$_ShrinkConfig;
 
   @override
   String get outputPath;
@@ -185,6 +214,8 @@ abstract class _ShrinkConfig implements ShrinkConfig {
   int get percentage;
   @override
   int get pixel;
+  @override
+  VideoCompressQuality get videoCompressQuality;
   @override
   @JsonKey(ignore: true)
   _$$_ShrinkConfigCopyWith<_$_ShrinkConfig> get copyWith =>

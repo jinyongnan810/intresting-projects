@@ -88,12 +88,12 @@ class LoadingScreen {
     state.insert(overlay);
 
     return LoadingScreenController(close: () {
-      print('close');
+      debugPrint('close');
       textStream.close();
       overlay.remove();
       return true;
     }, update: (text) {
-      print('update');
+      debugPrint('update');
       textStream.add(text);
       return true;
     });
