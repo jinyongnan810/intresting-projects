@@ -8,6 +8,7 @@ import 'package:image_shrinker/components/loading/loading_screen.dart';
 import 'package:image_shrinker/components/percentage_slider.dart';
 import 'package:image_shrinker/components/pixel_slider.dart';
 import 'package:image_shrinker/components/shrink_button.dart';
+import 'package:image_shrinker/components/video_quality_selector.dart';
 import 'package:image_shrinker/models/file_mode.dart';
 import 'package:image_shrinker/providers/file_mode_provider.dart';
 import 'package:image_shrinker/providers/loading_provider.dart';
@@ -56,6 +57,7 @@ class HomePage extends ConsumerWidget {
           const FolderSelector(),
           if (imageMode) const PercentageSlider(),
           if (imageMode) const PixelSlider(),
+          if (!imageMode) const VideoQualitySelector(),
           const ShrinkButton(),
           const ChangeModeButton()
         ]),
