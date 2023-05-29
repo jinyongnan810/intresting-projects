@@ -2,7 +2,6 @@
 
 - Currently only tested in macos.
 
-## TODOS
+## To Fix
 
 - video compress progress
-- video compress quality select
