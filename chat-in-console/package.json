@@ -1,0 +1,19 @@
+{
+  "name": "chat-in-console",
+  "version": "1.0.0",
+  "description": "Chatbot powered by OpenAI's GPT-3 in the console.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.3.1",
+    "openai": "^3.3.0",
+    "readline-sync": "^1.4.10"
+  }
+}
