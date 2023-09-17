@@ -5,7 +5,7 @@ import 'news_data.dart';
 
 const String appGroupId = 'group.kin.homewidget';
 const String iOSWidgetName = 'NewsWidgets';
-const String androidWidgetName = 'NewsWidget';
+const String androidWidgetName = 'HomeScreenWidget';
 
 void updateHeadline(NewsArticle newHeadline) {
   HomeWidget.setAppGroupId(appGroupId);
