@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen_widgets/home_screen.dart';
+import 'package:home_widget/home_widget.dart';
 import 'news_data.dart';
 
 class ArticleScreen extends StatefulWidget {
@@ -15,6 +16,7 @@ class ArticleScreen extends StatefulWidget {
 }
 
 class _ArticleScreenState extends State<ArticleScreen> {
+  final _globalKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +26,14 @@ class _ArticleScreenState extends State<ArticleScreen> {
               fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Updating home screen widget...'),
-            ),
+          HomeWidget.setAppGroupId(appGroupId);
+          await HomeWidget.renderFlutterWidget(
+            const LineChart(),
+            key: 'filename',
+            logicalSize: _globalKey.currentContext!.size ?? Size(100, 100),
+            pixelRatio:
+                MediaQuery.of(_globalKey.currentContext!).devicePixelRatio,
           );
-          // New: call updateHeadline
           updateHeadline(widget.article);
         },
         label: const Text('Update Homescreen'),
@@ -44,7 +48,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
           const SizedBox(height: 20.0),
           Text(widget.article.articleText!),
           const SizedBox(height: 20.0),
-          const Center(child: LineChart()),
+          Center(key: _globalKey, child: LineChart()),
           const SizedBox(height: 20.0),
           Text(widget.article.articleText!),
         ],

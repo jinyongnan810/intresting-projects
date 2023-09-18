@@ -3,8 +3,11 @@ package com.mydomain.home_screen_widgets
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.widget.RemoteViews
 import es.antonborri.home_widget.HomeWidgetPlugin
+import java.io.File
 
 /**
  * Implementation of App Widget functionality.
@@ -25,6 +28,17 @@ class HomeScreenWidget : AppWidgetProvider() {
 
                 val description = widgetData.getString("headline_description", null)
                 setTextViewText(R.id.headline_description, description ?: "No description set")
+
+                val imageName = widgetData.getString("filename", null)
+                val imageFile = File(imageName)
+                val imageExists = imageFile.exists()
+                if (imageExists) {
+                    val myBitmap: Bitmap = BitmapFactory.decodeFile(imageFile.absolutePath)
+                    setImageViewBitmap(R.id.widget_image, myBitmap)
+                    println("image exists @: ${imageName}")
+                } else {
+                    println("image not found!, looked @: ${imageName}")
+                }
             }
 
             appWidgetManager.updateAppWidget(appWidgetId, views)

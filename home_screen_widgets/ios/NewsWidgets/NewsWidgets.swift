@@ -13,7 +13,7 @@ struct Provider: TimelineProvider {
     // Placeholder is used as a placeholder when the widget is first displayed
         func placeholder(in context: Context) -> NewsArticleEntry {
     //      Add some placeholder title and description, and get the current date
-          NewsArticleEntry(date: Date(), title: "Placeholder Title", description: "Placeholder description")
+          NewsArticleEntry(date: Date(), title: "Placeholder Title", description: "Placeholder description", filename: "No screenshot available",  displaySize: context.displaySize)
         }
 
     // Snapshot entry represents the current time and state
@@ -26,7 +26,8 @@ struct Provider: TimelineProvider {
             let userDefaults = UserDefaults(suiteName: "group.kin.homewidget")
             let title = userDefaults?.string(forKey: "headline_title") ?? "No Title Set"
             let description = userDefaults?.string(forKey: "headline_description") ?? "No Description Set"
-            entry = NewsArticleEntry(date: Date(), title: title, description: description)
+            let filename = userDefaults?.string(forKey: "filename") ?? "No screenshot available"
+            entry = NewsArticleEntry(date: Date(), title: title, description: description, filename: filename,displaySize: context.displaySize)
           }
             completion(entry)
         }
@@ -46,6 +47,8 @@ struct NewsArticleEntry: TimelineEntry {
     let date: Date
     let title: String
     let description: String
+    let filename: String
+    let displaySize: CGSize
 }
 
 struct NewsWidgetsEntryView: View {
@@ -53,9 +56,21 @@ struct NewsWidgetsEntryView: View {
 
     var body: some View {
       VStack {
-        Text(entry.title)
-        Text(entry.description)
+        Text(entry.title).font(.system(size: 13))
+          Text(entry.description).font(.system(size: 12)).padding(EdgeInsets.init(top: 8, leading: 6, bottom: 8, trailing: 6))
+        ChartImage
       }
+    }
+    
+    var ChartImage: some View {
+        if let uiImage = UIImage(contentsOfFile: entry.filename) {
+            let image = Image(uiImage: uiImage)
+                .resizable()
+                .frame(width: entry.displaySize.height*0.5, height: entry.displaySize.height*0.5, alignment: .center)
+            return AnyView(image)
+        }
+        print("The image file could not be loaded")
+        return AnyView(EmptyView())
     }
 }
 
