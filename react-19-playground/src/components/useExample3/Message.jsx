@@ -1,20 +1,20 @@
-import { use, useState, Suspense } from 'react';
+import { use, useState, Suspense } from "react";
 
 // Simulate fetching a message
 function fetchMessage() {
-  return new Promise((resolve) => setTimeout(resolve, 1000, '⚛️'));
+  return new Promise((resolve) => setTimeout(resolve, 1000, "⚛️"));
 }
 
 // MessageOutput component
 const MessageOutput = ({ messagePromise }) => {
-  const messageContent = use(messagePromise);
-  return <p className='text-xl'>Here is the message: {messageContent}</p>;
+  const messageContent = use(messagePromise); // note: use can also take just a promise
+  return <p className="text-xl">Here is the message: {messageContent}</p>;
 };
 
 // MessageContainer component
 const MessageContainer = ({ messagePromise }) => {
   return (
-    <Suspense fallback={<p className='text-xl'>⌛Downloading message...</p>}>
+    <Suspense fallback={<p className="text-xl">⌛Downloading message...</p>}>
       <MessageOutput messagePromise={messagePromise} />
     </Suspense>
   );
@@ -36,7 +36,7 @@ const Message = () => {
   } else {
     return (
       <button
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick={download}
       >
         Download message
