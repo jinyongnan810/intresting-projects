@@ -32,7 +32,7 @@ database:
   host: localhost
   port: 5432
   name: fwitter
-  user: postgres
+  user: fwitter
 
 # This is the setup for Redis.
 redis:
