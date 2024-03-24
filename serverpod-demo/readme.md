@@ -1,4 +1,15 @@
 Following https://www.youtube.com/live/U4iMFNEyyk0?si=G4S5a3D3qrER_09t
+
+# Tricks
+## makefile
+```
+touch Makefile
+# add 
+run: 
+	cd fwitter && cd fwitter_flutter && flutter run -d macos --target lib/main_development.dart
+# run `make run` to start the app
+```
+
 # Steps
 ## initial setup
 - https://docs.serverpod.dev/
@@ -32,4 +43,14 @@ https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 mv fwitter_flutter fwitter_flutter.bak
 very_good create flutter_app fwitter_flutter
 # remove flutter_gen dependency and add fwitter_client, serverpod_flutter, build_runner(in dev)
+rm -rf macos
+flutter create . --platforms=macos
 ```
+
+### use injectable and get_it to provider client instance
+- add `injectable`, `injectable_generator` and `get_it` to `fwitter_client/pubspec.yaml`
+- create `di.dart`
+- `dart run build_runner build`
+- add third party module `FwitterClientModule`
+- `dart run build_runner build`
+- use instance like `GetIt.I<Client>()`
