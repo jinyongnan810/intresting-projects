@@ -3,6 +3,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fwitter_client/fwitter_client.dart';
+import 'package:serverpod_flutter/serverpod_flutter.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -24,6 +26,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
+
+  final client = Client('http://$localhost:8080/')
+    ..connectivityMonitor = FlutterConnectivityMonitor();
 
   Bloc.observer = const AppBlocObserver();
 
