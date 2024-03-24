@@ -26,3 +26,9 @@ https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 - in `fwitter_server` run `dart run bin/main.dart`
 - in `fwitter_web` run `flutter run`
 
+
+### replace default flutter project
+```
+mv fwitter_flutter fwitter_flutter.bak
+very_good create flutter_app fwitter_flutter
+```
