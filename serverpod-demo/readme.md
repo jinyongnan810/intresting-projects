@@ -54,3 +54,8 @@ flutter create . --platforms=macos
 - add third party module `FwitterClientModule`
 - `dart run build_runner build`
 - use instance like `GetIt.I<Client>()`
+
+## handle authentication
+- follow https://docs.serverpod.dev/concepts/authentication/setup
+- `dart run build_runner build` in `fwitter_flutter`.
+- `make generate`.

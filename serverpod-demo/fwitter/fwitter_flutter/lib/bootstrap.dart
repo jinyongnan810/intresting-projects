@@ -3,9 +3,9 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fwitter_client/fwitter_client.dart';
 import 'package:fwitter_flutter/di.dart';
-import 'package:serverpod_flutter/serverpod_flutter.dart';
+import 'package:get_it/get_it.dart';
+import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -28,6 +28,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
   configureDependencies();
+  await GetIt.I<SessionManager>().initialize();
 
   Bloc.observer = const AppBlocObserver();
 

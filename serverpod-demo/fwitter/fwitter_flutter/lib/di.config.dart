@@ -11,8 +11,10 @@
 import 'package:fwitter_client/fwitter_client.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
+import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart'
+    as _i4;
 
-import 'fwitter_client_module.dart' as _i4;
+import 'fwitter_client_module.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -26,9 +28,11 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     final fwitterClientModule = _$FwitterClientModule();
-    gh.factory<_i3.Client>(() => fwitterClientModule.client);
+    gh.lazySingleton<_i3.Client>(() => fwitterClientModule.client);
+    gh.lazySingleton<_i4.SessionManager>(
+        () => fwitterClientModule.sessionManager);
     return this;
   }
 }
 
-class _$FwitterClientModule extends _i4.FwitterClientModule {}
+class _$FwitterClientModule extends _i5.FwitterClientModule {}

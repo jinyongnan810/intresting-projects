@@ -1,0 +1,19 @@
+{
+  "moduleName": "fwitter",
+  "tables": [],
+  "installedModules": [
+    {
+      "module": "serverpod",
+      "version": "20240115074235544"
+    },
+    {
+      "module": "serverpod_auth",
+      "version": "20240115074239642"
+    },
+    {
+      "module": "fwitter",
+      "version": "20240317111358099"
+    }
+  ],
+  "migrationApiVersion": 1
+}
