@@ -1,0 +1,10 @@
+class: Post
+table: post
+fields:
+  author: String
+  body: String
+  createdAt: DateTime
+
+indexes:
+  post_uid_idx:
+    fields: author

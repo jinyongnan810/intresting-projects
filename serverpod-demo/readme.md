@@ -59,3 +59,10 @@ flutter create . --platforms=macos
 - follow https://docs.serverpod.dev/concepts/authentication/setup
 - `dart run build_runner build` in `fwitter_flutter`.
 - `make generate`.
+
+## Data layer
+### Make models
+- creating .spy.yaml files.
+- make migrations
+- make migrate
+- make generate
