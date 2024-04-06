@@ -62,7 +62,18 @@ flutter create . --platforms=macos
 
 ## Data layer
 ### Make models
-- creating .spy.yaml files.
+- create .spy.yaml files.
 - make migrations
 - make migrate
 - make generate
+
+### Make repositories
+- (client)create abstract class Repository
+- (client)extend Repository with PostRepository
+- (server)add endpoint
+- make generate
+- (client) use client to post to endpoint in PostRepository
+
+### Make views to access data
+- (flutter) create view widget
+- (flutter) make bloc to access data and update states.

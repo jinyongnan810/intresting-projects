@@ -12,3 +12,6 @@ migrate:
 
 generate:
 	cd fwitter && cd fwitter_server && serverpod generate
+
+build_app:
+	cd fwitter/fwitter_flutter && dart run build_runner build
