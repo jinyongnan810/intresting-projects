@@ -11,7 +11,7 @@ class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
       (event, emit) {
         event.map(
           save: (event) async {
-            await repo.save(PostWrapper(event.post));
+            await repo.save(event.post);
           },
         );
       },
