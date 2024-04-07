@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fwitter_client/fwitter_client.dart';
 import 'package:fwitter_flutter/l10n/l10n.dart';
-import 'package:fwitter_flutter/login/login.dart';
+import 'package:fwitter_flutter/screens/timeline/view/view.dart';
 import 'package:get_it/get_it.dart';
 
 class App extends StatefulWidget {
@@ -30,7 +30,7 @@ class _AppState extends State<App> {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const LoginPage(),
+      home: const TimelineView(),
     );
   }
 }

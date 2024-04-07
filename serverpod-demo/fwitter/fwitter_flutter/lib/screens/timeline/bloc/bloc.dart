@@ -8,13 +8,7 @@ part 'bloc.freezed.dart';
 class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
   TimelineBloc(this.repo, super.initialState) {
     on<TimelineEvent>(
-      (event, emit) {
-        event.map(
-          save: (event) async {
-            await repo.save(event.post);
-          },
-        );
-      },
+      (event, emit) {},
     );
   }
   final PostRepository repo;
@@ -31,6 +25,8 @@ class TimelineState with _$TimelineState {
     required List<Post> posts,
     TimelineError? error,
   }) = _TimelineState;
+  const TimelineState._();
+  factory TimelineState.initial() => const TimelineState(posts: []);
 }
 
 class TimelineError {}

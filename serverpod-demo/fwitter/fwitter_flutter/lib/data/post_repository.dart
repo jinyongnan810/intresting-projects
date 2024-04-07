@@ -1,6 +1,7 @@
 import 'package:fwitter_client/fwitter_client.dart';
 
 import 'package:fwitter_flutter/data/data.dart';
+import 'package:injectable/injectable.dart';
 
 class PostBinding extends ModelBindings<Post> {
   const PostBinding();
@@ -14,6 +15,7 @@ class PostBinding extends ModelBindings<Post> {
   Post fromJson(Map<String, Object?> json) => Post.fromJson(json, Protocol());
 }
 
+@Singleton()
 class PostRepository extends Repository<Post> {
   PostRepository(this.client) : super(bindings: const PostBinding());
   final Client client;

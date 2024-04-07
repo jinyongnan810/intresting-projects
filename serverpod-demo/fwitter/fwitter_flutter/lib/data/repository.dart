@@ -12,7 +12,7 @@ abstract class Repository<T> {
 
   Future<T> save(T item) async {
     final saved = await persist(item);
-    _localCache[bindings.getId(item)!] = saved;
+    _localCache[bindings.getId(saved)!] = saved;
     return saved;
   }
 
