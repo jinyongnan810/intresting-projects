@@ -221,7 +221,7 @@ abstract class SavePostEvent implements NewPostEvent {
 
 /// @nodoc
 mixin _$NewPostState {
-  String? get body => throw _privateConstructorUsedError;
+  Post? get post => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewPostStateCopyWith<NewPostState> get copyWith =>
@@ -234,7 +234,7 @@ abstract class $NewPostStateCopyWith<$Res> {
           NewPostState value, $Res Function(NewPostState) then) =
       _$NewPostStateCopyWithImpl<$Res, NewPostState>;
   @useResult
-  $Res call({String? body});
+  $Res call({Post? post});
 }
 
 /// @nodoc
@@ -250,13 +250,13 @@ class _$NewPostStateCopyWithImpl<$Res, $Val extends NewPostState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? body = freezed,
+    Object? post = freezed,
   }) {
     return _then(_value.copyWith(
-      body: freezed == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String?,
+      post: freezed == post
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post?,
     ) as $Val);
   }
 }
@@ -269,7 +269,7 @@ abstract class _$$NewPostStateImplCopyWith<$Res>
       __$$NewPostStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? body});
+  $Res call({Post? post});
 }
 
 /// @nodoc
@@ -283,13 +283,13 @@ class __$$NewPostStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? body = freezed,
+    Object? post = freezed,
   }) {
     return _then(_$NewPostStateImpl(
-      body: freezed == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String?,
+      post: freezed == post
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post?,
     ));
   }
 }
@@ -297,14 +297,14 @@ class __$$NewPostStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NewPostStateImpl extends _NewPostState {
-  const _$NewPostStateImpl({this.body}) : super._();
+  const _$NewPostStateImpl({this.post}) : super._();
 
   @override
-  final String? body;
+  final Post? post;
 
   @override
   String toString() {
-    return 'NewPostState(body: $body)';
+    return 'NewPostState(post: $post)';
   }
 
   @override
@@ -312,11 +312,11 @@ class _$NewPostStateImpl extends _NewPostState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewPostStateImpl &&
-            (identical(other.body, body) || other.body == body));
+            (identical(other.post, post) || other.post == post));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, body);
+  int get hashCode => Object.hash(runtimeType, post);
 
   @JsonKey(ignore: true)
   @override
@@ -326,11 +326,11 @@ class _$NewPostStateImpl extends _NewPostState {
 }
 
 abstract class _NewPostState extends NewPostState {
-  const factory _NewPostState({final String? body}) = _$NewPostStateImpl;
+  const factory _NewPostState({final Post? post}) = _$NewPostStateImpl;
   const _NewPostState._() : super._();
 
   @override
-  String? get body;
+  Post? get post;
   @override
   @JsonKey(ignore: true)
   _$$NewPostStateImplCopyWith<_$NewPostStateImpl> get copyWith =>

@@ -8,10 +8,11 @@ part 'new_post_bloc.freezed.dart';
 class NewPostBloc extends Bloc<NewPostEvent, NewPostState> {
   NewPostBloc(this.repo, super.initialState) {
     on<NewPostEvent>(
-      (event, emit) {
-        event.map(
+      (event, emit) async {
+        await event.map(
           save: (event) async {
-            await repo.save(event.post);
+            final savedPost = await repo.save(event.post);
+            emit(state.copyWith(post: savedPost));
           },
         );
       },
@@ -28,7 +29,7 @@ class NewPostEvent with _$NewPostEvent {
 @Freezed()
 class NewPostState with _$NewPostState {
   const factory NewPostState({
-    String? body,
+    Post? post,
   }) = _NewPostState;
   const NewPostState._();
   factory NewPostState.initial() => const NewPostState();
