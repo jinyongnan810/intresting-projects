@@ -3,12 +3,19 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fwitter_client/fwitter_client.dart';
 import 'package:fwitter_flutter/data/post_repository.dart';
 
-part 'bloc.freezed.dart';
+part 'timeline_bloc.freezed.dart';
 
 class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
   TimelineBloc(this.repo, super.initialState) {
     on<TimelineEvent>(
-      (event, emit) {},
+      (event, emit) async {
+        await event.map(
+          load: (e) async {
+            final posts = await repo.list();
+            emit(state.copyWith(posts: posts, error: null));
+          },
+        );
+      },
     );
   }
   final PostRepository repo;
@@ -16,7 +23,7 @@ class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
 
 @Freezed()
 class TimelineEvent with _$TimelineEvent {
-  const factory TimelineEvent.save(Post post) = SavePostEvent;
+  const factory TimelineEvent.load() = LoadPostsEvent;
 }
 
 @Freezed()

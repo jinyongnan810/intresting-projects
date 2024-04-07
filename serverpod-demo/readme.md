@@ -73,7 +73,9 @@ flutter create . --platforms=macos
 - (server)add endpoint
 - make generate
 - (client) use client to post to endpoint in PostRepository
+- (client) make repository singleton
 
 ### Make views to access data
 - (flutter) create view widget
-- (flutter) make bloc to access data and update states.
+- (flutter) make bloc with repository to access data and update states.
+- (flutter) use `BlocListener` or `BlocBuilder` to listen to states and update UI.
