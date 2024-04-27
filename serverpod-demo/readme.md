@@ -10,6 +10,11 @@ run:
 # run `make run` to start the app
 ```
 
+# maintenance
+## update serverpod
+- `dart pub global activate serverpod_cli 2.0.0-alpha.2`
+- update each project's `pubspec.yaml` to use the same version
+
 # Steps
 ## initial setup
 - https://docs.serverpod.dev/

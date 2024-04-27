@@ -12,7 +12,7 @@ import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/example_endpoint.dart' as _i2;
 import '../endpoints/post_endpoint.dart' as _i3;
 import 'package:fwitter_server/src/generated/post.dart' as _i4;
-import 'package:serverpod_auth_server/module.dart' as _i5;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i5;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override

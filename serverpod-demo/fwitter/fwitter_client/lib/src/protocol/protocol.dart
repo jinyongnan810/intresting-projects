@@ -13,7 +13,7 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'example.dart' as _i2;
 import 'post.dart' as _i3;
 import 'package:fwitter_client/src/protocol/post.dart' as _i4;
-import 'package:serverpod_auth_client/module.dart' as _i5;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i5;
 export 'example.dart';
 export 'post.dart';
 export 'client.dart';
