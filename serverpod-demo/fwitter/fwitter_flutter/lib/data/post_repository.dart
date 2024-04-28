@@ -1,6 +1,7 @@
 import 'package:fwitter_client/fwitter_client.dart';
 
 import 'package:fwitter_flutter/data/data.dart';
+import 'package:fwitter_shared/fwitter_shared.dart';
 import 'package:injectable/injectable.dart';
 
 class PostBinding extends ModelBindings<Post> {
@@ -29,7 +30,11 @@ class PostRepository extends Repository<Post> {
   }
 
   @override
-  Future<List<Post>> load() async {
-    return client.post.list();
+  Future<List<Post>> load([Filter<Post>? filter]) async {
+    return client.post.list(filter);
   }
+
+  @override
+  Future<List<Post>> loadRefresh() =>
+      load(PostFilter.createdAfter(maxCreatedAt));
 }

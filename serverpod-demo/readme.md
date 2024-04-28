@@ -84,3 +84,12 @@ flutter create . --platforms=macos
 - (flutter) create view widget
 - (flutter) make bloc with repository to access data and update states.
 - (flutter) use `BlocListener` or `BlocBuilder` to listen to states and update UI.
+
+## Filter data
+### create shared package
+- `flutter create -t package fwitter_shared`
+- make abstract class `Filter<T>` that has filter method
+  - define actual `PostFilter` that extends `Filter<Post>` and has filter method
+- define abstract `ComboFilter` that has list of filters and apply and or logic
+  - define actual `AndFilter` and `OrFilter` that extends `ComboFilter` and has apply method
+- use `AndFilter` and `OrFilter` to perform filter with list of filters.

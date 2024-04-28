@@ -1,3 +1,5 @@
+import 'package:fwitter_shared/fwitter_shared.dart';
+
 abstract class ModelBindings<T> {
   const ModelBindings();
   int? getId(T obj);
@@ -27,5 +29,16 @@ abstract class Repository<T> {
     return _localCache.values.toList()..sort(bindings.sortDesc);
   }
 
-  Future<List<T>> load();
+  DateTime get maxCreatedAt => DateTime.now();
+
+  Future<List<T>> refresh() async {
+    final newItems = await loadRefresh();
+    for (final item in newItems) {
+      _localCache[bindings.getId(item)!] = item;
+    }
+    return _localCache.values.toList()..sort(bindings.sortDesc);
+  }
+
+  Future<List<T>> load([Filter<T>? filter]);
+  Future<List<T>> loadRefresh();
 }

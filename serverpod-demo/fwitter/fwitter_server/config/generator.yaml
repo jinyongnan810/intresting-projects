@@ -4,3 +4,7 @@ client_package_path: ../fwitter_client
 modules:
   serverpod_auth:
     nickname: auth
+
+extraClasses:
+  - package:fwitter_shared/fwitter_shared.dart:Filter
+  - package:fwitter_shared/fwitter_shared.dart:PostFilter
