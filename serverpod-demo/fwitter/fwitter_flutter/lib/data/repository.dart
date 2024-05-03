@@ -39,6 +39,6 @@ abstract class Repository<T> {
     return _localCache.values.toList()..sort(bindings.sortDesc);
   }
 
-  Future<List<T>> load([Filter<T>? filter]);
+  Future<List<T>> load([Filter? filter]);
   Future<List<T>> loadRefresh();
 }

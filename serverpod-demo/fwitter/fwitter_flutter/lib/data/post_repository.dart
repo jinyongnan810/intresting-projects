@@ -30,7 +30,7 @@ class PostRepository extends Repository<Post> {
   }
 
   @override
-  Future<List<Post>> load([Filter<Post>? filter]) async {
+  Future<List<Post>> load([covariant PostFilter? filter]) async {
     return client.post.list(filter);
   }
 

@@ -2,7 +2,7 @@ name: fwitter_shared
 description: "A new Flutter package project."
 version: 0.0.1
 homepage: null
-upload_to: none
+publish_to: none
 
 environment:
   sdk: ">=3.3.0 <4.0.0"

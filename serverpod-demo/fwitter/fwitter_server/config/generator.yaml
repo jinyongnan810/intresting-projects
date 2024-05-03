@@ -6,5 +6,4 @@ modules:
     nickname: auth
 
 extraClasses:
-  - package:fwitter_shared/fwitter_shared.dart:Filter
   - package:fwitter_shared/fwitter_shared.dart:PostFilter

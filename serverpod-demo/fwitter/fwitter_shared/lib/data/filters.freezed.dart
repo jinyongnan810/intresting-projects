@@ -16,6 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 PostFilter _$PostFilterFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
+    case 'and':
+      return AndPostFilter.fromJson(json);
+    case 'or':
+      return OrPostFilter.fromJson(json);
     case 'createdAfter':
       return PostFilterCreatedAfter.fromJson(json);
     case 'createdBefore':
@@ -31,9 +35,10 @@ PostFilter _$PostFilterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostFilter {
-  Object get value => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<PostFilter> filters) and,
+    required TResult Function(List<PostFilter> filters) or,
     required TResult Function(DateTime value) createdAfter,
     required TResult Function(DateTime value) createdBefore,
     required TResult Function(String value) bodyContains,
@@ -41,6 +46,8 @@ mixin _$PostFilter {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<PostFilter> filters)? and,
+    TResult? Function(List<PostFilter> filters)? or,
     TResult? Function(DateTime value)? createdAfter,
     TResult? Function(DateTime value)? createdBefore,
     TResult? Function(String value)? bodyContains,
@@ -48,6 +55,8 @@ mixin _$PostFilter {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<PostFilter> filters)? and,
+    TResult Function(List<PostFilter> filters)? or,
     TResult Function(DateTime value)? createdAfter,
     TResult Function(DateTime value)? createdBefore,
     TResult Function(String value)? bodyContains,
@@ -56,6 +65,8 @@ mixin _$PostFilter {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(AndPostFilter value) and,
+    required TResult Function(OrPostFilter value) or,
     required TResult Function(PostFilterCreatedAfter value) createdAfter,
     required TResult Function(PostFilterCreatedBefore value) createdBefore,
     required TResult Function(PostFilterBodyContains value) bodyContains,
@@ -63,6 +74,8 @@ mixin _$PostFilter {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AndPostFilter value)? and,
+    TResult? Function(OrPostFilter value)? or,
     TResult? Function(PostFilterCreatedAfter value)? createdAfter,
     TResult? Function(PostFilterCreatedBefore value)? createdBefore,
     TResult? Function(PostFilterBodyContains value)? bodyContains,
@@ -70,6 +83,8 @@ mixin _$PostFilter {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(AndPostFilter value)? and,
+    TResult Function(OrPostFilter value)? or,
     TResult Function(PostFilterCreatedAfter value)? createdAfter,
     TResult Function(PostFilterCreatedBefore value)? createdBefore,
     TResult Function(PostFilterBodyContains value)? bodyContains,
@@ -95,6 +110,362 @@ class _$PostFilterCopyWithImpl<$Res, $Val extends PostFilter>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$AndPostFilterImplCopyWith<$Res> {
+  factory _$$AndPostFilterImplCopyWith(
+          _$AndPostFilterImpl value, $Res Function(_$AndPostFilterImpl) then) =
+      __$$AndPostFilterImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PostFilter> filters});
+}
+
+/// @nodoc
+class __$$AndPostFilterImplCopyWithImpl<$Res>
+    extends _$PostFilterCopyWithImpl<$Res, _$AndPostFilterImpl>
+    implements _$$AndPostFilterImplCopyWith<$Res> {
+  __$$AndPostFilterImplCopyWithImpl(
+      _$AndPostFilterImpl _value, $Res Function(_$AndPostFilterImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filters = null,
+  }) {
+    return _then(_$AndPostFilterImpl(
+      null == filters
+          ? _value._filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as List<PostFilter>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AndPostFilterImpl extends AndPostFilter {
+  _$AndPostFilterImpl(final List<PostFilter> filters, {final String? $type})
+      : _filters = filters,
+        $type = $type ?? 'and',
+        super._();
+
+  factory _$AndPostFilterImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AndPostFilterImplFromJson(json);
+
+  final List<PostFilter> _filters;
+  @override
+  List<PostFilter> get filters {
+    if (_filters is EqualUnmodifiableListView) return _filters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filters);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PostFilter.and(filters: $filters)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AndPostFilterImpl &&
+            const DeepCollectionEquality().equals(other._filters, _filters));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_filters));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AndPostFilterImplCopyWith<_$AndPostFilterImpl> get copyWith =>
+      __$$AndPostFilterImplCopyWithImpl<_$AndPostFilterImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<PostFilter> filters) and,
+    required TResult Function(List<PostFilter> filters) or,
+    required TResult Function(DateTime value) createdAfter,
+    required TResult Function(DateTime value) createdBefore,
+    required TResult Function(String value) bodyContains,
+  }) {
+    return and(filters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<PostFilter> filters)? and,
+    TResult? Function(List<PostFilter> filters)? or,
+    TResult? Function(DateTime value)? createdAfter,
+    TResult? Function(DateTime value)? createdBefore,
+    TResult? Function(String value)? bodyContains,
+  }) {
+    return and?.call(filters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<PostFilter> filters)? and,
+    TResult Function(List<PostFilter> filters)? or,
+    TResult Function(DateTime value)? createdAfter,
+    TResult Function(DateTime value)? createdBefore,
+    TResult Function(String value)? bodyContains,
+    required TResult orElse(),
+  }) {
+    if (and != null) {
+      return and(filters);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AndPostFilter value) and,
+    required TResult Function(OrPostFilter value) or,
+    required TResult Function(PostFilterCreatedAfter value) createdAfter,
+    required TResult Function(PostFilterCreatedBefore value) createdBefore,
+    required TResult Function(PostFilterBodyContains value) bodyContains,
+  }) {
+    return and(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AndPostFilter value)? and,
+    TResult? Function(OrPostFilter value)? or,
+    TResult? Function(PostFilterCreatedAfter value)? createdAfter,
+    TResult? Function(PostFilterCreatedBefore value)? createdBefore,
+    TResult? Function(PostFilterBodyContains value)? bodyContains,
+  }) {
+    return and?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AndPostFilter value)? and,
+    TResult Function(OrPostFilter value)? or,
+    TResult Function(PostFilterCreatedAfter value)? createdAfter,
+    TResult Function(PostFilterCreatedBefore value)? createdBefore,
+    TResult Function(PostFilterBodyContains value)? bodyContains,
+    required TResult orElse(),
+  }) {
+    if (and != null) {
+      return and(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AndPostFilterImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class AndPostFilter extends PostFilter {
+  factory AndPostFilter(final List<PostFilter> filters) = _$AndPostFilterImpl;
+  AndPostFilter._() : super._();
+
+  factory AndPostFilter.fromJson(Map<String, dynamic> json) =
+      _$AndPostFilterImpl.fromJson;
+
+  List<PostFilter> get filters;
+  @JsonKey(ignore: true)
+  _$$AndPostFilterImplCopyWith<_$AndPostFilterImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OrPostFilterImplCopyWith<$Res> {
+  factory _$$OrPostFilterImplCopyWith(
+          _$OrPostFilterImpl value, $Res Function(_$OrPostFilterImpl) then) =
+      __$$OrPostFilterImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PostFilter> filters});
+}
+
+/// @nodoc
+class __$$OrPostFilterImplCopyWithImpl<$Res>
+    extends _$PostFilterCopyWithImpl<$Res, _$OrPostFilterImpl>
+    implements _$$OrPostFilterImplCopyWith<$Res> {
+  __$$OrPostFilterImplCopyWithImpl(
+      _$OrPostFilterImpl _value, $Res Function(_$OrPostFilterImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filters = null,
+  }) {
+    return _then(_$OrPostFilterImpl(
+      null == filters
+          ? _value._filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as List<PostFilter>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OrPostFilterImpl extends OrPostFilter {
+  _$OrPostFilterImpl(final List<PostFilter> filters, {final String? $type})
+      : _filters = filters,
+        $type = $type ?? 'or',
+        super._();
+
+  factory _$OrPostFilterImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrPostFilterImplFromJson(json);
+
+  final List<PostFilter> _filters;
+  @override
+  List<PostFilter> get filters {
+    if (_filters is EqualUnmodifiableListView) return _filters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filters);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PostFilter.or(filters: $filters)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OrPostFilterImpl &&
+            const DeepCollectionEquality().equals(other._filters, _filters));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_filters));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrPostFilterImplCopyWith<_$OrPostFilterImpl> get copyWith =>
+      __$$OrPostFilterImplCopyWithImpl<_$OrPostFilterImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<PostFilter> filters) and,
+    required TResult Function(List<PostFilter> filters) or,
+    required TResult Function(DateTime value) createdAfter,
+    required TResult Function(DateTime value) createdBefore,
+    required TResult Function(String value) bodyContains,
+  }) {
+    return or(filters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<PostFilter> filters)? and,
+    TResult? Function(List<PostFilter> filters)? or,
+    TResult? Function(DateTime value)? createdAfter,
+    TResult? Function(DateTime value)? createdBefore,
+    TResult? Function(String value)? bodyContains,
+  }) {
+    return or?.call(filters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<PostFilter> filters)? and,
+    TResult Function(List<PostFilter> filters)? or,
+    TResult Function(DateTime value)? createdAfter,
+    TResult Function(DateTime value)? createdBefore,
+    TResult Function(String value)? bodyContains,
+    required TResult orElse(),
+  }) {
+    if (or != null) {
+      return or(filters);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AndPostFilter value) and,
+    required TResult Function(OrPostFilter value) or,
+    required TResult Function(PostFilterCreatedAfter value) createdAfter,
+    required TResult Function(PostFilterCreatedBefore value) createdBefore,
+    required TResult Function(PostFilterBodyContains value) bodyContains,
+  }) {
+    return or(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AndPostFilter value)? and,
+    TResult? Function(OrPostFilter value)? or,
+    TResult? Function(PostFilterCreatedAfter value)? createdAfter,
+    TResult? Function(PostFilterCreatedBefore value)? createdBefore,
+    TResult? Function(PostFilterBodyContains value)? bodyContains,
+  }) {
+    return or?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AndPostFilter value)? and,
+    TResult Function(OrPostFilter value)? or,
+    TResult Function(PostFilterCreatedAfter value)? createdAfter,
+    TResult Function(PostFilterCreatedBefore value)? createdBefore,
+    TResult Function(PostFilterBodyContains value)? bodyContains,
+    required TResult orElse(),
+  }) {
+    if (or != null) {
+      return or(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OrPostFilterImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class OrPostFilter extends PostFilter {
+  factory OrPostFilter(final List<PostFilter> filters) = _$OrPostFilterImpl;
+  OrPostFilter._() : super._();
+
+  factory OrPostFilter.fromJson(Map<String, dynamic> json) =
+      _$OrPostFilterImpl.fromJson;
+
+  List<PostFilter> get filters;
+  @JsonKey(ignore: true)
+  _$$OrPostFilterImplCopyWith<_$OrPostFilterImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -173,6 +544,8 @@ class _$PostFilterCreatedAfterImpl extends PostFilterCreatedAfter {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<PostFilter> filters) and,
+    required TResult Function(List<PostFilter> filters) or,
     required TResult Function(DateTime value) createdAfter,
     required TResult Function(DateTime value) createdBefore,
     required TResult Function(String value) bodyContains,
@@ -183,6 +556,8 @@ class _$PostFilterCreatedAfterImpl extends PostFilterCreatedAfter {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<PostFilter> filters)? and,
+    TResult? Function(List<PostFilter> filters)? or,
     TResult? Function(DateTime value)? createdAfter,
     TResult? Function(DateTime value)? createdBefore,
     TResult? Function(String value)? bodyContains,
@@ -193,6 +568,8 @@ class _$PostFilterCreatedAfterImpl extends PostFilterCreatedAfter {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<PostFilter> filters)? and,
+    TResult Function(List<PostFilter> filters)? or,
     TResult Function(DateTime value)? createdAfter,
     TResult Function(DateTime value)? createdBefore,
     TResult Function(String value)? bodyContains,
@@ -207,6 +584,8 @@ class _$PostFilterCreatedAfterImpl extends PostFilterCreatedAfter {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(AndPostFilter value) and,
+    required TResult Function(OrPostFilter value) or,
     required TResult Function(PostFilterCreatedAfter value) createdAfter,
     required TResult Function(PostFilterCreatedBefore value) createdBefore,
     required TResult Function(PostFilterBodyContains value) bodyContains,
@@ -217,6 +596,8 @@ class _$PostFilterCreatedAfterImpl extends PostFilterCreatedAfter {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AndPostFilter value)? and,
+    TResult? Function(OrPostFilter value)? or,
     TResult? Function(PostFilterCreatedAfter value)? createdAfter,
     TResult? Function(PostFilterCreatedBefore value)? createdBefore,
     TResult? Function(PostFilterBodyContains value)? bodyContains,
@@ -227,6 +608,8 @@ class _$PostFilterCreatedAfterImpl extends PostFilterCreatedAfter {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(AndPostFilter value)? and,
+    TResult Function(OrPostFilter value)? or,
     TResult Function(PostFilterCreatedAfter value)? createdAfter,
     TResult Function(PostFilterCreatedBefore value)? createdBefore,
     TResult Function(PostFilterBodyContains value)? bodyContains,
@@ -254,7 +637,6 @@ abstract class PostFilterCreatedAfter extends PostFilter {
   factory PostFilterCreatedAfter.fromJson(Map<String, dynamic> json) =
       _$PostFilterCreatedAfterImpl.fromJson;
 
-  @override
   DateTime get value;
   @JsonKey(ignore: true)
   _$$PostFilterCreatedAfterImplCopyWith<_$PostFilterCreatedAfterImpl>
@@ -337,6 +719,8 @@ class _$PostFilterCreatedBeforeImpl extends PostFilterCreatedBefore {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<PostFilter> filters) and,
+    required TResult Function(List<PostFilter> filters) or,
     required TResult Function(DateTime value) createdAfter,
     required TResult Function(DateTime value) createdBefore,
     required TResult Function(String value) bodyContains,
@@ -347,6 +731,8 @@ class _$PostFilterCreatedBeforeImpl extends PostFilterCreatedBefore {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<PostFilter> filters)? and,
+    TResult? Function(List<PostFilter> filters)? or,
     TResult? Function(DateTime value)? createdAfter,
     TResult? Function(DateTime value)? createdBefore,
     TResult? Function(String value)? bodyContains,
@@ -357,6 +743,8 @@ class _$PostFilterCreatedBeforeImpl extends PostFilterCreatedBefore {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<PostFilter> filters)? and,
+    TResult Function(List<PostFilter> filters)? or,
     TResult Function(DateTime value)? createdAfter,
     TResult Function(DateTime value)? createdBefore,
     TResult Function(String value)? bodyContains,
@@ -371,6 +759,8 @@ class _$PostFilterCreatedBeforeImpl extends PostFilterCreatedBefore {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(AndPostFilter value) and,
+    required TResult Function(OrPostFilter value) or,
     required TResult Function(PostFilterCreatedAfter value) createdAfter,
     required TResult Function(PostFilterCreatedBefore value) createdBefore,
     required TResult Function(PostFilterBodyContains value) bodyContains,
@@ -381,6 +771,8 @@ class _$PostFilterCreatedBeforeImpl extends PostFilterCreatedBefore {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AndPostFilter value)? and,
+    TResult? Function(OrPostFilter value)? or,
     TResult? Function(PostFilterCreatedAfter value)? createdAfter,
     TResult? Function(PostFilterCreatedBefore value)? createdBefore,
     TResult? Function(PostFilterBodyContains value)? bodyContains,
@@ -391,6 +783,8 @@ class _$PostFilterCreatedBeforeImpl extends PostFilterCreatedBefore {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(AndPostFilter value)? and,
+    TResult Function(OrPostFilter value)? or,
     TResult Function(PostFilterCreatedAfter value)? createdAfter,
     TResult Function(PostFilterCreatedBefore value)? createdBefore,
     TResult Function(PostFilterBodyContains value)? bodyContains,
@@ -418,7 +812,6 @@ abstract class PostFilterCreatedBefore extends PostFilter {
   factory PostFilterCreatedBefore.fromJson(Map<String, dynamic> json) =
       _$PostFilterCreatedBeforeImpl.fromJson;
 
-  @override
   DateTime get value;
   @JsonKey(ignore: true)
   _$$PostFilterCreatedBeforeImplCopyWith<_$PostFilterCreatedBeforeImpl>
@@ -501,6 +894,8 @@ class _$PostFilterBodyContainsImpl extends PostFilterBodyContains {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(List<PostFilter> filters) and,
+    required TResult Function(List<PostFilter> filters) or,
     required TResult Function(DateTime value) createdAfter,
     required TResult Function(DateTime value) createdBefore,
     required TResult Function(String value) bodyContains,
@@ -511,6 +906,8 @@ class _$PostFilterBodyContainsImpl extends PostFilterBodyContains {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<PostFilter> filters)? and,
+    TResult? Function(List<PostFilter> filters)? or,
     TResult? Function(DateTime value)? createdAfter,
     TResult? Function(DateTime value)? createdBefore,
     TResult? Function(String value)? bodyContains,
@@ -521,6 +918,8 @@ class _$PostFilterBodyContainsImpl extends PostFilterBodyContains {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<PostFilter> filters)? and,
+    TResult Function(List<PostFilter> filters)? or,
     TResult Function(DateTime value)? createdAfter,
     TResult Function(DateTime value)? createdBefore,
     TResult Function(String value)? bodyContains,
@@ -535,6 +934,8 @@ class _$PostFilterBodyContainsImpl extends PostFilterBodyContains {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(AndPostFilter value) and,
+    required TResult Function(OrPostFilter value) or,
     required TResult Function(PostFilterCreatedAfter value) createdAfter,
     required TResult Function(PostFilterCreatedBefore value) createdBefore,
     required TResult Function(PostFilterBodyContains value) bodyContains,
@@ -545,6 +946,8 @@ class _$PostFilterBodyContainsImpl extends PostFilterBodyContains {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AndPostFilter value)? and,
+    TResult? Function(OrPostFilter value)? or,
     TResult? Function(PostFilterCreatedAfter value)? createdAfter,
     TResult? Function(PostFilterCreatedBefore value)? createdBefore,
     TResult? Function(PostFilterBodyContains value)? bodyContains,
@@ -555,6 +958,8 @@ class _$PostFilterBodyContainsImpl extends PostFilterBodyContains {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(AndPostFilter value)? and,
+    TResult Function(OrPostFilter value)? or,
     TResult Function(PostFilterCreatedAfter value)? createdAfter,
     TResult Function(PostFilterCreatedBefore value)? createdBefore,
     TResult Function(PostFilterBodyContains value)? bodyContains,
@@ -582,7 +987,6 @@ abstract class PostFilterBodyContains extends PostFilter {
   factory PostFilterBodyContains.fromJson(Map<String, dynamic> json) =
       _$PostFilterBodyContainsImpl.fromJson;
 
-  @override
   String get value;
   @JsonKey(ignore: true)
   _$$PostFilterBodyContainsImplCopyWith<_$PostFilterBodyContainsImpl>

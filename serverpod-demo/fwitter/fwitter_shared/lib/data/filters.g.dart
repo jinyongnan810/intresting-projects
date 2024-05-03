@@ -6,6 +6,34 @@ part of 'filters.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$AndPostFilterImpl _$$AndPostFilterImplFromJson(Map<String, dynamic> json) =>
+    _$AndPostFilterImpl(
+      (json['filters'] as List<dynamic>)
+          .map((e) => PostFilter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$AndPostFilterImplToJson(_$AndPostFilterImpl instance) =>
+    <String, dynamic>{
+      'filters': instance.filters,
+      'runtimeType': instance.$type,
+    };
+
+_$OrPostFilterImpl _$$OrPostFilterImplFromJson(Map<String, dynamic> json) =>
+    _$OrPostFilterImpl(
+      (json['filters'] as List<dynamic>)
+          .map((e) => PostFilter.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$OrPostFilterImplToJson(_$OrPostFilterImpl instance) =>
+    <String, dynamic>{
+      'filters': instance.filters,
+      'runtimeType': instance.$type,
+    };
+
 _$PostFilterCreatedAfterImpl _$$PostFilterCreatedAfterImplFromJson(
         Map<String, dynamic> json) =>
     _$PostFilterCreatedAfterImpl(
