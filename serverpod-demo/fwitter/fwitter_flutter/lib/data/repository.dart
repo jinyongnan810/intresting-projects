@@ -21,8 +21,8 @@ abstract class Repository<T> {
 
   Future<T> persist(T item);
 
-  Future<List<T>> list() async {
-    final items = await load();
+  Future<List<T>> list([Filter? filter]) async {
+    final items = await load(filter);
     for (final item in items) {
       _localCache[bindings.getId(item)!] = item;
     }
