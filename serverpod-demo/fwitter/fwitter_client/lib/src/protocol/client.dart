@@ -11,7 +11,7 @@
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
 import 'package:fwitter_client/src/protocol/post.dart' as _i3;
-import 'package:fwitter_shared/fwitter_shared.dart' as _i4;
+import 'package:fwitter_shared/data/filters.dart' as _i4;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i5;
 import 'protocol.dart' as _i6;
 

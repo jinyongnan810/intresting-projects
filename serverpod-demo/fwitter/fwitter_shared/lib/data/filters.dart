@@ -6,15 +6,15 @@ part 'filters.g.dart';
 
 typedef Json = Map<String, dynamic>;
 
-sealed class Filter {
+sealed class Filter<T> {
   const Filter();
-  bool apply(Object obj);
-  List<Object> applyToList(Iterable<Object> list) => list.where(apply).toList();
+  bool apply(T obj);
+  List<T> applyToList(Iterable<T> list) => list.where(apply).toList();
   Json toJson() => throw UnimplementedError();
 }
 
 @Freezed()
-class PostFilter extends Filter with _$PostFilter {
+class PostFilter extends Filter<Post> with _$PostFilter {
   const PostFilter._();
   factory PostFilter.and(List<PostFilter> filters) = AndPostFilter;
   factory PostFilter.or(List<PostFilter> filters) = OrPostFilter;

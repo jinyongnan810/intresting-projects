@@ -21,20 +21,15 @@ class PostBinding extends ModelBindings<Post> {
 
 @Singleton()
 class PostRepository extends Repository<Post> {
-  PostRepository(this.client) : super(bindings: const PostBinding());
+  PostRepository(this.client)
+      : super(
+          bindings: const PostBinding(),
+          localSource: LocalSource<Post>(const PostBinding()),
+          remoteSource: ServerpodSource<Post>(
+            saveHandler: client.post.save,
+            listHandler: ([filter]) async =>
+                client.post.list(filter as PostFilter?),
+          ),
+        );
   final Client client;
-
-  @override
-  Future<Post> persist(Post item) async {
-    return client.post.save(item);
-  }
-
-  @override
-  Future<List<Post>> load([covariant PostFilter? filter]) async {
-    return client.post.list(filter);
-  }
-
-  @override
-  Future<List<Post>> loadRefresh() =>
-      load(PostFilter.createdAfter(maxCreatedAt));
 }

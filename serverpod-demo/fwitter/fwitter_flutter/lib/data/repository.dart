@@ -1,3 +1,4 @@
+import 'package:fwitter_flutter/data/data.dart';
 import 'package:fwitter_shared/fwitter_shared.dart';
 
 abstract class ModelBindings<T> {
@@ -8,37 +9,32 @@ abstract class ModelBindings<T> {
   int sortDesc(T a, T b);
 }
 
-abstract class Repository<T> {
-  Repository({required this.bindings});
+abstract class Repository<T> extends DataContract<T> {
+  Repository({
+    required this.bindings,
+    required this.localSource,
+    required this.remoteSource,
+  });
   final ModelBindings<T> bindings;
-  final _localCache = <int, T>{};
+  final LocalSource<T> localSource;
+  final RemoteSource<T> remoteSource;
 
+  @override
   Future<T> save(T item) async {
-    final saved = await persist(item);
-    _localCache[bindings.getId(saved)!] = saved;
+    final saved = await remoteSource.save(item);
+    await localSource.save(saved);
     return saved;
   }
 
-  Future<T> persist(T item);
-
-  Future<List<T>> list([Filter? filter]) async {
-    final items = await load(filter);
-    for (final item in items) {
-      _localCache[bindings.getId(item)!] = item;
+  @override
+  Future<List<T>> list([Filter<T>? filter]) async {
+    var items = await localSource.list(filter);
+    if (items.isEmpty) {
+      items = await remoteSource.list(filter);
+      for (final item in items) {
+        await localSource.save(item);
+      }
     }
-    return _localCache.values.toList()..sort(bindings.sortDesc);
+    return items..sort(bindings.sortDesc);
   }
-
-  DateTime get maxCreatedAt => DateTime.now();
-
-  Future<List<T>> refresh() async {
-    final newItems = await loadRefresh();
-    for (final item in newItems) {
-      _localCache[bindings.getId(item)!] = item;
-    }
-    return _localCache.values.toList()..sort(bindings.sortDesc);
-  }
-
-  Future<List<T>> load([Filter? filter]);
-  Future<List<T>> loadRefresh();
 }
