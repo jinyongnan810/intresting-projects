@@ -24,8 +24,6 @@ class Protocol extends _i1.SerializationManager {
 
   factory Protocol() => _instance;
 
-  static final Map<Type, _i1.constructor> customConstructors = {};
-
   static final Protocol _instance = Protocol._();
 
   @override
@@ -34,20 +32,17 @@ class Protocol extends _i1.SerializationManager {
     Type? t,
   ]) {
     t ??= T;
-    if (customConstructors.containsKey(t)) {
-      return customConstructors[t]!(data, this) as T;
-    }
     if (t == _i2.Example) {
-      return _i2.Example.fromJson(data, this) as T;
+      return _i2.Example.fromJson(data) as T;
     }
     if (t == _i3.Post) {
-      return _i3.Post.fromJson(data, this) as T;
+      return _i3.Post.fromJson(data) as T;
     }
     if (t == _i1.getType<_i2.Example?>()) {
-      return (data != null ? _i2.Example.fromJson(data, this) : null) as T;
+      return (data != null ? _i2.Example.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i3.Post?>()) {
-      return (data != null ? _i3.Post.fromJson(data, this) : null) as T;
+      return (data != null ? _i3.Post.fromJson(data) : null) as T;
     }
     if (t == List<_i4.Post>) {
       return (data as List).map((e) => deserialize<_i4.Post>(e)).toList()
@@ -61,7 +56,7 @@ class Protocol extends _i1.SerializationManager {
     }
     try {
       return _i6.Protocol().deserialize<T>(data, t);
-    } catch (_) {}
+    } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
 

@@ -24,8 +24,6 @@ class Protocol extends _i1.SerializationManagerServer {
 
   factory Protocol() => _instance;
 
-  static final Map<Type, _i1.constructor> customConstructors = {};
-
   static final Protocol _instance = Protocol._();
 
   static final List<_i2.TableDefinition> targetTableDefinitions = [
@@ -102,20 +100,17 @@ class Protocol extends _i1.SerializationManagerServer {
     Type? t,
   ]) {
     t ??= T;
-    if (customConstructors.containsKey(t)) {
-      return customConstructors[t]!(data, this) as T;
-    }
     if (t == _i4.Example) {
-      return _i4.Example.fromJson(data, this) as T;
+      return _i4.Example.fromJson(data) as T;
     }
     if (t == _i5.Post) {
-      return _i5.Post.fromJson(data, this) as T;
+      return _i5.Post.fromJson(data) as T;
     }
     if (t == _i1.getType<_i4.Example?>()) {
-      return (data != null ? _i4.Example.fromJson(data, this) : null) as T;
+      return (data != null ? _i4.Example.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i5.Post?>()) {
-      return (data != null ? _i5.Post.fromJson(data, this) : null) as T;
+      return (data != null ? _i5.Post.fromJson(data) : null) as T;
     }
     if (t == List<_i6.Post>) {
       return (data as List).map((e) => deserialize<_i6.Post>(e)).toList()
@@ -129,10 +124,10 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     try {
       return _i3.Protocol().deserialize<T>(data, t);
-    } catch (_) {}
+    } on _i1.DeserializationTypeNotFoundException catch (_) {}
     try {
       return _i2.Protocol().deserialize<T>(data, t);
-    } catch (_) {}
+    } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
 

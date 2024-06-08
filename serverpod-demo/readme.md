@@ -12,7 +12,7 @@ run:
 
 # maintenance
 ## update serverpod
-- `dart pub global activate serverpod_cli 2.0.0-alpha.2`
+- `dart pub global activate serverpod_cli 2.0.0`
 - update each project's `pubspec.yaml` to use the same version
 
 # Steps

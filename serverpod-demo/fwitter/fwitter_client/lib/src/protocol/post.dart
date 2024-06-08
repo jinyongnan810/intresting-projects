@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-abstract class Post extends _i1.SerializableEntity {
+abstract class Post implements _i1.SerializableModel {
   Post._({
     this.id,
     required this.author,
@@ -25,17 +25,13 @@ abstract class Post extends _i1.SerializableEntity {
     required DateTime createdAt,
   }) = _PostImpl;
 
-  factory Post.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory Post.fromJson(Map<String, dynamic> jsonSerialization) {
     return Post(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      author:
-          serializationManager.deserialize<String>(jsonSerialization['author']),
-      body: serializationManager.deserialize<String>(jsonSerialization['body']),
-      createdAt: serializationManager
-          .deserialize<DateTime>(jsonSerialization['createdAt']),
+      id: jsonSerialization['id'] as int?,
+      author: jsonSerialization['author'] as String,
+      body: jsonSerialization['body'] as String,
+      createdAt:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
     );
   }
 
@@ -64,6 +60,11 @@ abstract class Post extends _i1.SerializableEntity {
       'body': body,
       'createdAt': createdAt.toJson(),
     };
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 

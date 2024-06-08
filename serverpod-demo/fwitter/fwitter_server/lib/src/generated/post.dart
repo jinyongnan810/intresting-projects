@@ -11,7 +11,7 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod_serialization/serverpod_serialization.dart';
 
-abstract class Post extends _i1.TableRow {
+abstract class Post extends _i1.TableRow implements _i1.ProtocolSerialization {
   Post._({
     int? id,
     required this.author,
@@ -26,17 +26,13 @@ abstract class Post extends _i1.TableRow {
     required DateTime createdAt,
   }) = _PostImpl;
 
-  factory Post.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory Post.fromJson(Map<String, dynamic> jsonSerialization) {
     return Post(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      author:
-          serializationManager.deserialize<String>(jsonSerialization['author']),
-      body: serializationManager.deserialize<String>(jsonSerialization['body']),
-      createdAt: serializationManager
-          .deserialize<DateTime>(jsonSerialization['createdAt']),
+      id: jsonSerialization['id'] as int?,
+      author: jsonSerialization['author'] as String,
+      body: jsonSerialization['body'] as String,
+      createdAt:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
     );
   }
 
@@ -70,7 +66,7 @@ abstract class Post extends _i1.TableRow {
   }
 
   @override
-  Map<String, dynamic> allToJson() {
+  Map<String, dynamic> toJsonForProtocol() {
     return {
       if (id != null) 'id': id,
       'author': author,
@@ -101,6 +97,11 @@ abstract class Post extends _i1.TableRow {
       orderByList: orderByList?.call(Post.t),
       include: include,
     );
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 
@@ -298,7 +299,7 @@ class PostRepository {
     );
   }
 
-  Future<List<int>> delete(
+  Future<List<Post>> delete(
     _i1.Session session,
     List<Post> rows, {
     _i1.Transaction? transaction,
@@ -309,7 +310,7 @@ class PostRepository {
     );
   }
 
-  Future<int> deleteRow(
+  Future<Post> deleteRow(
     _i1.Session session,
     Post row, {
     _i1.Transaction? transaction,
@@ -320,7 +321,7 @@ class PostRepository {
     );
   }
 
-  Future<List<int>> deleteWhere(
+  Future<List<Post>> deleteWhere(
     _i1.Session session, {
     required _i1.WhereExpressionBuilder<PostTable> where,
     _i1.Transaction? transaction,

@@ -13,7 +13,7 @@ class PostBinding extends ModelBindings<Post> {
   Map<String, Object?> toJson(Post obj) => obj.toJson();
 
   @override
-  Post fromJson(Map<String, Object?> json) => Post.fromJson(json, Protocol());
+  Post fromJson(Map<String, Object?> json) => Post.fromJson(json);
 
   @override
   int sortDesc(Post a, Post b) => b.createdAt.compareTo(a.createdAt);

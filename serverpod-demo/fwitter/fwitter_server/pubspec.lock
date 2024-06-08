@@ -440,58 +440,50 @@ packages:
     dependency: "direct main"
     description:
       name: serverpod
-      sha256: "6b3bbebc731c28821fe39478242ef30055dc473c1a97213c260d1abad97736e2"
+      sha256: "353f4d6c18791064aefdb1b3e7a940e20e044d9eb6d981b8df3861c7c8dea865"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0-alpha.2"
+    version: "2.0.0"
   serverpod_auth_client:
     dependency: transitive
     description:
       name: serverpod_auth_client
-      sha256: "61ff15fce6f2d54c1caa531e718ee8f09ed4b554646e190713d27de43f8e88bb"
+      sha256: "429d508605a09e3799287e8a671992ad313630be8d4ab7f959f044306ff0732e"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0-alpha.2"
+    version: "2.0.0"
   serverpod_auth_server:
     dependency: "direct main"
     description:
       name: serverpod_auth_server
-      sha256: f44addb77dd32b01bd09bcb1ea5f680d42a82f432d36df13ef7182606b96d5a9
+      sha256: "3a7a96a3a1133fb3934b662e4b2142842f4992b8dd4f6aa501ea55afe7328b0d"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0-alpha.2"
+    version: "2.0.0"
   serverpod_client:
     dependency: transitive
     description:
       name: serverpod_client
-      sha256: af17179d6bb7dfd2e0ff918dbb5aab5657af37484fb8a512235a10c9e8772e73
+      sha256: f5c464c7d37c81bb59a7c9a242ab1700ff802360ee8e763f2acfe4a37fa5e1bb
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0-alpha.2"
+    version: "2.0.0"
   serverpod_serialization:
     dependency: transitive
     description:
       name: serverpod_serialization
-      sha256: "3b200505e67fd24ffbfa55e94c161cce6b9e4811898e15322d842e83bf28625e"
+      sha256: e042c85bbd8ec11f4a24bd31e49de9fd5e7fa79ccdb61a896fa7c9b5d47c613c
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0-alpha.2"
-  serverpod_service_client:
-    dependency: transitive
-    description:
-      name: serverpod_service_client
-      sha256: d480b482515c3a480e742c595dc880147f9e32c0d546bf6870fec062d8a67425
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0-alpha.2"
+    version: "2.0.0"
   serverpod_shared:
     dependency: transitive
     description:
       name: serverpod_shared
-      sha256: "71f4642e7f2ca6e870b3369347e2d08be52024b1d6e7d443ef5cf3def5a68471"
+      sha256: "2c7df5d47b11c94edc6102bd519271711bfd53515c33f8624efad0aa02800e7a"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0-alpha.2"
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
