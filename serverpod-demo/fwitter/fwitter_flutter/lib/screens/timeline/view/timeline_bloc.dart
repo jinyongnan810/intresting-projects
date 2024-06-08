@@ -15,7 +15,6 @@ class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
             final posts = await repo.list(
               PostFilter.and([
                 PostFilter.createdAfter(DateTime.parse('2024-04-08')),
-                PostFilter.bodyContains('o'),
               ]),
             );
             emit(state.copyWith(posts: posts, error: null));
